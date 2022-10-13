@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 import { Search } from "./components/search/Search";
+import { Home } from "./components/home/Home"
 
 // function App() {
 //   return (
@@ -29,6 +30,7 @@ function App() {
   return (
     <div className="App">
         <Search />
+        <Home />
     </div>
   );
 }

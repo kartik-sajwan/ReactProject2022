@@ -8,20 +8,17 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-appearance:none;
 }
 
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0; 
+}
 
 html {
   font-size: 16px;
   /* This specifies the root size for browsers mentioned in pixels, used to make rem calculations*/
-  width: 100%; }
-
-code {
-  font-family: 'Roboto', monospace;
+  width: 100%;
 }
 
 input[type="search"]::-webkit-search-decoration,
