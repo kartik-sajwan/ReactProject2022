@@ -1,36 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.scss';
+import { TypedUseSelectorHook, useDispatch,useSelector } from "react-redux";
+
 
 import { Search } from "./components/search/Search";
-import { Home } from "./components/home/Home"
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+import { Favs } from './components/favs/Favs';
+import { WeatherCard } from "./components/weatherCard/weatherCard";
+import { IWeather } from './interfaces/interfaces';
+import { useAppDispatch, useAppSelector } from './app/reducer/hook';
 
 function App() {
+
+  const [searchResult, setSearchResults] = useState<IWeather>({})
+  const handleSearchResultUpdate = (result: IWeather) => {
+    setSearchResults(result);
+  }
+
   return (
     <div className="App">
-        <Search />
-        <Home />
+        <Search handleSearchResultUpdate={handleSearchResultUpdate}/>
+        <WeatherCard result={searchResult}  />
+        <Favs />
     </div>
   );
 }

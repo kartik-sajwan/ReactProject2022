@@ -1,0 +1,31 @@
+.card-wrapper {
+	position: absolute;
+	width: 327px;
+	height: 176px;
+	left: 24px;
+	top: 151px;
+	background: #FDFCFC;
+	border-radius: 11px;
+
+	h3 {
+		
+		// position: absolute;
+		width: 85px;
+		height: 30px;
+		left: 44px;
+		top: 176px;
+
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 30px;
+		/* identical to box height */
+
+		display: flex;
+		align-items: center;
+		text-align: center;
+
+		color: #2C2C2C;
+	}
+}

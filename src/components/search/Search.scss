@@ -41,12 +41,18 @@
 		outline: none;
 	}
 
-	svg {
+	.search-btn {
 		position: absolute;
 		left: 83.47%;
 		right: 11.87%;
 		top: 7.14%;
 		bottom: 90.7%;
+		background-color: transparent;
+		background-image: url(../../assets/search_24px.svg);
+		background-size: 100% 100%;
+		border: 0;
+		padding: 8px 15px;
+		color: white;
 	}
 
 	
