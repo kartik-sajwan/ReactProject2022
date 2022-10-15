@@ -1,32 +1,66 @@
 .card-wrapper {
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	width: 327px;
 	height: 176px;
 	left: 24px;
 	top: 151px;
-	background: #EAEAEA;
+	background: #E5E5E5;
 	border-radius: 11px;
-
-	border: 0.063rem solid #DADADA;
 	border-radius: 0.938rem;
-	h3 {
-		
-		// position: absolute;
-		width: 85px;
-		height: 30px;
-		left: 44px;
-		top: 176px;
+	padding: 0rem;
 
-		font-family: 'Poppins';
-		font-style: normal;
-		font-weight: 600;
-		font-size: 20px;
-		line-height: 30px;
-		/* identical to box height */
-
+	.city-details {
 		display: flex;
-		align-items: center;
-		text-align: center;
+		flex-direction: column;
+		justify-content: space-between;
 
-		color: #2C2C2C;
+		h3 {
+			font-family: 'Poppins';
+			font-weight: 600;
+			font-size: 20px;
+			color: #2C2C2C;
+			margin: 1rem 0.2rem 0rem 1rem;
+
+		}
+		h2 {
+			font-family: 'Poppins';
+			font-weight: 500;
+			font-size: 60px;
+			color: #2C2C2C;
+			margin: 0rem 0.2rem 0rem 1rem;
+		}
+		.warning {
+			margin: 0rem -1rem 1rem 1rem;
+			color: #BFAF1B;
+		}
 	}
+
+	.brief-weather {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		
+		img {
+			margin: 0rem;
+			height: 7rem;
+			width: 7rem;
+			padding: 0rem;
+		}
+		
+		.warning {
+			margin: 0rem 1rem 1rem 0.2rem;
+			color: #BFAF1B;
+		}
+		.desc {
+			margin: 0rem 1rem 1rem 0.2rem;
+			font-family: 'Poppins';
+			font-weight: 600;
+			font-size: 1rem;
+			color: #2C2C2C;
+		}
+	}
+
 }

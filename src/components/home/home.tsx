@@ -15,8 +15,8 @@ const Home = () => {
 	return(
 		<div className='home'>
 			<Search handleSearchResultUpdate={handleSearchResultUpdate}/>
-			<WeatherCard result={searchResult}  />
-			{/* <Favs /> */}
+			{searchResult.id && <WeatherCard result={searchResult}  />}
+			{!searchResult.id && <Favs />}
 		</div>
 	)
 };
