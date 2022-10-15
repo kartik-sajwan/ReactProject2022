@@ -16,7 +16,7 @@ const Search: React.FC<SearchProps> = ({handleSearchResultUpdate}) => {
 	const [cityWeather, setCityWeather] = useState<IWeather>({})
 	const [apiError, setApiError] = useState("");
 
-
+	//Suggestions for searchTerm from citiesList
 	const suggestCities = (searchTerm: string, topFifty: ICity[] = []) => {
 		citiesList.filter((val) => {
 			if(searchTerm === "") {
@@ -24,13 +24,13 @@ const Search: React.FC<SearchProps> = ({handleSearchResultUpdate}) => {
 			} else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
 				topFifty.push({id: val.id, name: val.name});
 			}
-			setSuggestions([...topFifty].slice(0, 50));
+			setSuggestions([...topFifty].slice(0, 5));
 		});
 	};
 
 	const handleSearch = (searchTerm: string, response: IWeather = {}) => {
 	axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=34e0733052ac7efacd645cd60b0fc116`)
+      .get(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=34e0733052ac7efacd645cd60b0fc116&units=metric`)
       .then(
         (response) => {
           setSearchTerm("");
@@ -39,6 +39,8 @@ const Search: React.FC<SearchProps> = ({handleSearchResultUpdate}) => {
         },
         (error) => {
 			setApiError(error.response.data.message);
+			alert(error.response.data.message);
+			setSearchTerm("");
         }
       )
 	}
@@ -47,28 +49,26 @@ const Search: React.FC<SearchProps> = ({handleSearchResultUpdate}) => {
 		setSuggestions([]);
 		setSearchTerm(selectedCity);
 	};
-
-	
 	
 	return(
 		<div className="search">
-			<input 
-				type="search" 
-				className="search-bar" 
-				placeholder="Search Location"
-				value={searchTerm}
-				onChange={(event) => {
-					setSearchTerm(event.target.value);
-					suggestCities(searchTerm);
-				}}
-			/>
-
-			<button className='search-btn' onClick={() => handleSearch(searchTerm)}></button>
-
+			<div className='search-bar'>
+				<input 
+					type="search" 
+					className="search-bar-input" 
+					placeholder="Search Location"
+					value={searchTerm}
+					onChange={(event) => {
+						setSearchTerm(event.target.value);
+						suggestCities(searchTerm);
+					}}
+				/>
+				<button className='search-btn' onClick={() => {handleSearch(searchTerm); fillSearchTerm(searchTerm)}}></button>
+			</div>
 			<div className="tag-container">
 				{searchTerm?.length && citySuggestions?.length
 					? citySuggestions?.map((city) => (
-						<div className="space" key={city.id}>
+						<div className="city" key={city.id}>
 							<Tag
 								label={city.name}
 								type="tag"
@@ -79,7 +79,6 @@ const Search: React.FC<SearchProps> = ({handleSearchResultUpdate}) => {
 					: null}
 			</div>
 		</div>
-				
 	);
 };
 export { Search };

@@ -4,6 +4,7 @@ import { useAppSelector } from "../../app/reducer/hook";
 
 const Favs = () => {
   const favourites = useAppSelector((state) => state.weather.favourites);
+  
   return (
     <div>
       {favourites.length > 0 ? (

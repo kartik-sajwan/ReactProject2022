@@ -8,7 +8,7 @@ const Tag: React.FC<ITag> = ({ label, type, onClick }) => {
     "searchBtn";
 
 	return(
-		<div className="tag">
+		<div className="city-btn">
 			<button onClick={onClick} className={className}>
 				<strong>{label}</strong>
 			</button>

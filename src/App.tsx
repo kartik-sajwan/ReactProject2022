@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
-import { TypedUseSelectorHook, useDispatch,useSelector } from "react-redux";
+import { WeatherDetail } from './components/weatherdetail/weatherDetail';
 
-
-import { Search } from "./components/search/Search";
-import { Favs } from './components/favs/Favs';
-import { WeatherCard } from "./components/weatherCard/weatherCard";
-import { IWeather } from './interfaces/interfaces';
-import { useAppDispatch, useAppSelector } from './app/reducer/hook';
+import { Home } from './components/home/home';
 
 function App() {
 
-  const [searchResult, setSearchResults] = useState<IWeather>({})
-  const handleSearchResultUpdate = (result: IWeather) => {
-    setSearchResults(result);
-  }
-
   return (
     <div className="App">
-        <Search handleSearchResultUpdate={handleSearchResultUpdate}/>
-        <WeatherCard result={searchResult}  />
-        <Favs />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/weatherdetail" element={<WeatherDetail/>}/>
+            <Route path="*" element={<Home/>}/>
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }

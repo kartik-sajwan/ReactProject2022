@@ -13,35 +13,23 @@
 // 	border-radius: 5em;
 //   }
 
-.tag{
+.city{
 
-	
-		display: flex;
-		justify-content: space-evenly;
-		position: absolute;
-		width: 78px;
-		height: 31px;
-		left: 24px;
-		top: 105px;
-	
-		background: #FDFCFC;
-		border: 1px solid #DADADA;
-		border-radius: 7px;
+	display: flex;
+	flex-wrap: 0;
+	padding: 0rem 0.5rem;
+	background: #FDFCFC;
+	border: 1px solid #DADADA;
+	border-radius: 7px;
 	
 	button {
-		width: 42px;
-		height: 15px;
-		left: 42px;
-		top: 113px;
-
+		display: inline-block;
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 10px;
 		line-height: 15px;
 		/* identical to box height */
-
-
 		color: #2C2C2C;
 	}
 }
