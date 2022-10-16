@@ -12,10 +12,11 @@ const WeatherCard: React.FC<WeatherProp> =  (cityWeather: WeatherProp) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	 const show: boolean = (cityWeather)? true : false;
 	 const icon: any = cityWeather.result.weather?.map((item) => {return item.icon}) ?? "";
 	 const description: any = cityWeather.result.weather?.map((item) => {return item.description}) ?? "";
 	 const temp: any = (cityWeather.result.main?.temp) ?  Math.trunc(cityWeather.result.main.temp) : "";
+
+	 //Show warning based on cloudiness
 	 const cloudiness: any = (cityWeather.result.clouds?.all) ?  Math.trunc(cityWeather.result.clouds?.all) : "";
 	 const warning: boolean = ((cloudiness) > 80)? true : false;
 
