@@ -7,7 +7,6 @@ import { useState } from "react";
 import Carousel from "react-simply-carousel";
 import { removeFavourite } from "../../app/reducer/favouriteSlice";
 import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
-import empty from "../../assets/empty.png";
 import { IWeather } from "../../interfaces/interfaces";
 import { GraphComponent } from "../graphComponent/graphComponent";
 
@@ -203,7 +202,7 @@ const Favs = () => {
 const NoResults = () => {
   return (
     <div className="empty-watchlist">
-      <img src={empty} alt="" />
+        <div className='clouds'></div>
       <p>No locations added to watchlist</p>
     </div>
   );

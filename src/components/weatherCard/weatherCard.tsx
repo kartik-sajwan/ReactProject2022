@@ -47,6 +47,7 @@ const WeatherCard: React.FC<WeatherProp> =  (cityWeather) => {
 				{ warning && <p className="warning">&#9888; WARNING</p>}
 			</div>
 			<div className="brief-weather">
+				<div className="forward"></div>
 				<img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" />
 				{ warning && <p className="warning">Expecting Rainfall</p>}
 				{ !warning && <p className="desc">{description}</p>}

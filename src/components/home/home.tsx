@@ -14,10 +14,13 @@ const Home = () => {
 	}
 	return(
 		<div className='home'>
+			<div className='top-bar'>
+				<div className='logo'></div>
+				<h6>Weather Forecaster</h6>
+			</div>
 			<Search handleSearchResultUpdate={handleSearchResultUpdate}/>
 			{searchResult.id && <WeatherCard result={searchResult}  />}
 			{!searchResult.id && <Favs />}
-			{/* {!searchResult.id && <Carousel />} */}
 		</div>
 	)
 };

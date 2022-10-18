@@ -1,165 +1,364 @@
 .home-favs {
   display: flex;
-  
-}
-.card-wrapper-favs {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.5rem 1.5rem;
 
-  background: #ffffff;
-  border-radius: 11px;
-  border-radius: 0.938rem;
-  padding: 0rem;
-
-  .remove-from-list {
-    align-self: flex-end;
-    .remove {
-      width: 62.88px;
-      height: 39px;
-      left: 299px;
-      top: 65px;
-
-      background: #ec7272;
-      border-radius: 7px;
-
-      font-family: "Poppins";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 18px;
-      text-align: center;
-      margin: 0rem 0rem 0rem 0.2rem;
-      color: #ffffff;
-    }
-  }
-  .city-detail {
+  .card-wrapper-favs {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin: 0rem 0rem;
-    img {
-      width: 123px;
-      height: 123px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .location {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      h3 {
+    margin: 0.5rem 1.5rem;
+
+    background: #ffffff;
+    border-radius: 11px;
+    border-radius: 0.938rem;
+    padding: 0rem;
+
+    .remove-from-list {
+      align-self: flex-end;
+      .remove {
+        width: 62.88px;
+        height: 39px;
+        left: 299px;
+        top: 65px;
+
+        background: #ec7272;
+        border-radius: 7px;
+
         font-family: "Poppins";
         font-style: normal;
-        font-weight: 600;
-        font-size: 30px;
-        line-height: 45px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
         text-align: center;
-        color: #2c2c2c;
-      }
-      svg {
-        height: 21px;
-        width: 21px;
-        margin: 0.7rem;
+        margin: 0rem 0rem 0rem 0.2rem;
+        color: #ffffff;
       }
     }
+    .city-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin: 0rem 0rem;
+      img {
+        width: 123px;
+        height: 123px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .location {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        h3 {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 30px;
+          line-height: 45px;
+          text-align: center;
+          color: #2c2c2c;
+        }
+        svg {
+          height: 21px;
+          width: 21px;
+          margin: 0.7rem;
+        }
+      }
 
-    .temperature {
+      .temperature {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        h2 {
+          font-family: "Poppins";
+          font-weight: 500;
+          font-size: 60px;
+          color: #2c2c2c;
+          text-align: center;
+        }
+        svg {
+          height: 8px;
+          width: 8px;
+          margin: 1rem 0rem;
+        }
+      }
+    }
+    .weather-detail {
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      h2 {
+      justify-content: space-between;
+      background-color: #fdfcfc;
+      border-radius: 11px;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         font-family: "Poppins";
+        font-style: normal;
         font-weight: 500;
-        font-size: 60px;
-        color: #2c2c2c;
+        font-size: 12px;
+        line-height: 18px;
+        color: #c4c4c4;
+        margin: 0.5rem 0.6rem;
         text-align: center;
-      }
-      svg {
-        height: 8px;
-        width: 8px;
-        margin: 1rem 0rem;
+        padding: 0.3rem;
+
+        .value {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 15px;
+          line-height: 22px;
+          color: #9a9a9a;
+          margin: 0.5rem 0rem;
+        }
       }
     }
-  }
-  .weather-detail {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #fdfcfc;
-    border-radius: 11px;
-
-    .item {
+    .graph-wrapper {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      font-family: "Poppins";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 18px;
-      color: #c4c4c4;
-      margin: 0.5rem 0.6rem;
-      text-align: center;
-      padding: 0.3rem;
+      background-color: #fdfcfc;
+      border-radius: 11px;
+      margin: 1rem 0rem;
 
-      .value {
+      h5 {
         font-family: "Poppins";
         font-style: normal;
         font-weight: 500;
-        font-size: 15px;
-        line-height: 22px;
-        color: #9a9a9a;
+        font-size: 12px;
+        line-height: 18px;
+        /* identical to box height */
+        margin: 1rem 0.6rem;
+
+        color: #c4c4c4;
+      }
+
+      .graph {
+        width: 340px;
+        height: 150px;
         margin: 0.5rem 0rem;
+        padding: 0rem 1rem;
+      }
+
+      .daylight {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        /* identical to box height */
+        color: #9a9a9a;
+        margin: 0.5rem 0.5rem;
+        p {
+          padding: 0.2rem;
+          strong {
+            color: #2c2c2c;
+          }
+        }
       }
     }
   }
-  .graph-wrapper {
+  .empty-watchlist {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    background-color: #fdfcfc;
-    border-radius: 11px;
-    margin: 1rem 0rem;
+    align-items: center;
+    margin: 13.063rem 0rem;
+    padding: 0rem;
 
-    h5 {
-      font-family: "Poppins";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 18px;
-      /* identical to box height */
-      margin: 1rem 0.6rem;
-
-      color: #c4c4c4;
+    .clouds {
+      background-image: url("../../assets/empty.svg");
+      background-size: 100% 100%;
+      width: 10.875rem;
+      height: 4.5rem;
     }
-
-    .graph {
-      width: 340px;
-      height: 150px;
-      margin: 0.5rem 0rem;
-      padding: 0rem 1rem;
+    p {
+      font-size: 15px;
     }
+  }
+}
 
-    .daylight {
-      font-family: "Poppins";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 15px;
-      /* identical to box height */
-      color: #9a9a9a;
-      margin: 0.5rem 0.5rem;
+@media only screen and (min-device-width: 1024px) {
+  .home-favs {
+    align-items: center;
+
+    .card-wrapper-favs {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem 1.5rem;
+
+      background: #ffffff;
+      border-radius: 11px;
+      border-radius: 0.938rem;
+      padding: 0rem;
+
+      .remove-from-list {
+        align-self: flex-end;
+        .remove {
+          width: 62.88px;
+          height: 39px;
+          left: 299px;
+          top: 65px;
+
+          background: #ec7272;
+          border-radius: 7px;
+
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 18px;
+          text-align: center;
+          margin: 0rem 0rem 0rem 0.2rem;
+          color: #ffffff;
+        }
+      }
+      .city-detail {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0rem 0rem;
+        img {
+          width: 123px;
+          height: 123px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .location {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          h3 {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 45px;
+            text-align: center;
+            color: #2c2c2c;
+          }
+          svg {
+            height: 21px;
+            width: 21px;
+            margin: 0.7rem;
+          }
+        }
+
+        .temperature {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          h2 {
+            font-family: "Poppins";
+            font-weight: 500;
+            font-size: 60px;
+            color: #2c2c2c;
+            text-align: center;
+          }
+          svg {
+            height: 8px;
+            width: 8px;
+            margin: 1rem 0rem;
+          }
+        }
+      }
+      .weather-detail {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #fdfcfc;
+        border-radius: 11px;
+
+        .item {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 18px;
+          color: #c4c4c4;
+          margin: 0.5rem 0.6rem;
+          text-align: center;
+          padding: 0.3rem;
+
+          .value {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 22px;
+            color: #9a9a9a;
+            margin: 0.5rem 0rem;
+          }
+        }
+      }
+      .graph-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #fdfcfc;
+        border-radius: 11px;
+        margin: 1rem 0rem;
+
+        h5 {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 18px;
+          /* identical to box height */
+          margin: 1rem 0.6rem;
+
+          color: #c4c4c4;
+        }
+
+        .graph {
+          width: 340px;
+          height: 150px;
+          margin: 0.5rem 0rem;
+          padding: 0rem 1rem;
+        }
+
+        .daylight {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          /* identical to box height */
+          color: #9a9a9a;
+          margin: 0.5rem 0.5rem;
+          p {
+            padding: 0.2rem;
+            strong {
+              color: #2c2c2c;
+            }
+          }
+        }
+      }
+    }
+    .empty-watchlist {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 7rem;
+      .clouds {
+        width: 25.299rem;
+        height: 10.89rem;
+      }
       p {
-        padding: 0.2rem;
-		strong {
-			color: #2c2c2c;
-		}
+        font-size: 1.25rem;
       }
     }
   }
+  
 }

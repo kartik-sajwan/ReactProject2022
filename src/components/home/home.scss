@@ -1,8 +1,50 @@
 .home {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
-	margin: 2.75rem 1.5rem;
+  margin: 2.75rem 1.5rem;
+
+  .top-bar {
+    display: none;
+  }
+}
+
+@media only screen and (min-device-width: 1024px) {
+  .home {
+    margin: 0rem;
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+      height: 100px;
+      left: 0px;
+      bottom: 882px;
+      background: rgba(178, 235, 242, 0.5);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+
+      .logo {
+        background-image: url("../../assets/home_logo.svg");
+        width: 80px;
+        height: 80px;
+        left: 35px;
+        top: 10px;
+        margin: 0rem 0.531rem 0rem 2.188rem;
+      }
+      h6 {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        /* identical to box height, or 120% */
+        margin: 0.531rem;
+
+        color: #000000;
+      }
+    }
+  }
 }

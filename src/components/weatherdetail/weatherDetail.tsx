@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   addFavourite,
   clearSelected,
-  removeFavourite
+  removeFavourite,
 } from "../../app/reducer/favouriteSlice";
 import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
 import { GraphComponent } from "../graphComponent/graphComponent";
@@ -17,7 +17,6 @@ const WeatherDetail = () => {
   const dispatch = useAppDispatch();
   const navigateTo = useNavigate();
 
-  
   const isSelectedInFavourites = () => {
     favourites.map((fav) => {
       if (fav.id === selected?.id) {
@@ -27,10 +26,9 @@ const WeatherDetail = () => {
   };
 
   useEffect(() => {
-    
-//   if (selected.name="") {
-//     navigateTo("/home")
-//  }
+    //   if (selected.name="") {
+    //     navigateTo("/home")
+    //  }
     isSelectedInFavourites();
   }, []);
 
@@ -40,35 +38,52 @@ const WeatherDetail = () => {
       return item.icon;
     }) ?? "";
 
-  
   const temp: any = Math.round(selected?.main?.temp);
   const time = moment(selected?.dt).format("hh:mm A");
-  
+
   const sunrise = moment.unix(selected?.sys?.sunrise);
   const sunset = moment.unix(selected?.sys?.sunset);
 
   // Find length of day and daylight left
-  const now = moment()
+  const now = moment();
 
-  const dayLength = sunset.diff(sunrise, 'minutes');
-  const dayLengthHours = Math.floor(dayLength/60);
+  const dayLength = sunset.diff(sunrise, "minutes");
+  const dayLengthHours = Math.floor(dayLength / 60);
   const dayLengthMins = dayLength % 60;
 
-  const daylightLeft = sunset.diff(now, 'minutes');
-  const daylightHours = (Math.floor(daylightLeft/60) >= 12) ? (24 - Math.floor(daylightLeft/60)) : Math.floor(daylightLeft/60);
+  const daylightLeft = sunset.diff(now, "minutes");
+  const daylightHours =
+    Math.floor(daylightLeft / 60) >= 12
+      ? 24 - Math.floor(daylightLeft / 60)
+      : Math.floor(daylightLeft / 60);
   const daylightMins = daylightLeft % 60;
-
 
   return (
     <div className="card-wrapper-details">
+      <div className="top-bar">
+        <div className="logo"></div>
+        <h6>Weather Forecaster</h6>
+      </div>
       <div className="action-btn">
-        <button
-          className="back-btn"
-          onClick={() => {
-            dispatch(clearSelected({}));
-            navigateTo("/home");
-          }}
-        ></button>
+        <div className="go-back">
+          <button
+            className="back-icon"
+            onClick={() => {
+              dispatch(clearSelected({}));
+              navigateTo("/home");
+            }}
+          ></button>
+          <button
+            className="back-btn"
+            onClick={() => {
+              dispatch(clearSelected({}));
+              navigateTo("/home");
+            }}
+          >
+            Back
+          </button>
+        </div>
+
         <div className="add-to-favs">
           {!isFavourite && (
             <div className="add-to-list">
@@ -184,8 +199,18 @@ const WeatherDetail = () => {
           <GraphComponent cityName={selected.name} />
         </div>
         <div className="daylight">
-          <p>Length of day: <strong>{dayLengthHours}H {dayLengthMins}M</strong></p>
-          <p>Remaining daylight: <strong>{daylightHours}H {daylightMins}M</strong></p>
+          <p>
+            Length of day:{" "}
+            <strong>
+              {dayLengthHours}H {dayLengthMins}M
+            </strong>
+          </p>
+          <p>
+            Remaining daylight:{" "}
+            <strong>
+              {daylightHours}H {daylightMins}M
+            </strong>
+          </p>
         </div>
       </div>
     </div>
@@ -193,4 +218,3 @@ const WeatherDetail = () => {
 };
 
 export { WeatherDetail };
-
