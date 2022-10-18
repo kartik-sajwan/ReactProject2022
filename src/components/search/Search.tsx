@@ -14,18 +14,18 @@ const Search: React.FC<SearchProps> = ({ handleSearchResultUpdate }) => {
   const [citySuggestions, setSuggestions] = useState<ICity[]>([]);
   const [apiError, setApiError] = useState("");
 
-  setCitiesList(cities);
+  
   //Suggestions for searchTerm from citiesList
   const suggestCities = (searchTerm: string, topFifty: ICity[] = []) => {
-    citiesList.filter((val) => {
+	setCitiesList(cities);
+    citiesList.forEach((val) => {
       if (searchTerm === "") {
         return "";
       } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
         topFifty.push({ id: val.id, name: val.name });
       }
-      return([...topFifty].slice(0, 5));
+      setSuggestions([...topFifty].slice(0, 5));
     });
-	return ([]);
   };
 
   const handleSearch = (searchTerm: string, response: IWeather = {}) => {
@@ -60,7 +60,7 @@ const Search: React.FC<SearchProps> = ({ handleSearchResultUpdate }) => {
           value={searchTerm}
           onChange={(event) => {
             setSearchTerm(event.target.value);
-            setSuggestions(suggestCities(searchTerm));
+            suggestCities(searchTerm);
             setApiError("");
           }}
         />
