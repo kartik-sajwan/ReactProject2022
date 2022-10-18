@@ -61,7 +61,8 @@ const Search: React.FC<SearchProps> = ({handleSearchResultUpdate}) => {
 					onChange={(event) => {
 						setSearchTerm(event.target.value);
 						suggestCities(searchTerm);
-					}}
+					}
+				}
 				/>
 				<button className='search-btn' onClick={() => {handleSearch(searchTerm); fillSearchTerm(searchTerm)}}></button>
 			</div>

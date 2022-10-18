@@ -152,7 +152,7 @@ const Favs = () => {
               <h5>UPCOMING DAYS</h5>
               <div className="graph">
               
-                <GraphComponent />
+                <GraphComponent cityName={val.name}/>
               </div>
               <div className="daylight">
                 <p>

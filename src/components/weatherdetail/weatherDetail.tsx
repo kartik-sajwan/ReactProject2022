@@ -35,6 +35,7 @@ ChartJS.register(
   PointElement
 );
 
+
 const WeatherDetail = () => {
   const { favourites, selected } = useAppSelector((state) => state.weather);
   const [cityForecast, setCityForecast] = useState<IForecast>({});
@@ -52,30 +53,30 @@ const WeatherDetail = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${selected.name}&appid=34e0733052ac7efacd645cd60b0fc116&units=metric`
-      )
-      .then(
-        (response) => {
-          setCityForecast(response.data);
+    // axios
+    //   .get(
+    //     `https://api.openweathermap.org/data/2.5/forecast?q=${selected.name}&appid=34e0733052ac7efacd645cd60b0fc116&units=metric`
+    //   )
+    //   .then(
+    //     (response) => {
+    //       setCityForecast(response.data);
 
-          if (response.data !== cityForecast) {
-            const data: number[] = [];
-            const label: string[] = [];
-            response.data.list?.filter((val) => {
-              if (val.dt_txt?.includes("12:00:00")) {
-                data.push(val.main?.temp);
-                label.push(val.dt_txt?.slice(8, 10));
-              }
-            });
-            dispatch(updateChart({ plots: data, labels: label }));
-          }
-        },
-        (error) => {
-          setApiError(error.response.data.message);
-        }
-      );
+    //       if (response.data !== cityForecast) {
+    //         const data: number[] = [];
+    //         const label: string[] = [];
+    //         response.data.list?.filter((val) => {
+    //           if (val.dt_txt?.includes("12:00:00")) {
+    //             data.push(val.main?.temp);
+    //             label.push(val.dt_txt?.slice(8, 10));
+    //           }
+    //         });
+    //         dispatch(updateChart({ plots: data, labels: label }));
+    //       }
+    //     },
+    //     (error) => {
+    //       setApiError(error.response.data.message);
+    //     }
+    //   );
     isSelectedInFavourites();
   }, []);
 
@@ -225,7 +226,7 @@ const WeatherDetail = () => {
       <div className="graph-wrapper">
         <h5>UPCOMING DAYS</h5>
         <div className="graph">
-          <GraphComponent />
+          <GraphComponent cityName={selected.name} />
         </div>
         <div className="daylight">
           <p>Length of day: <strong>{dayLengthHours}H {dayLengthMins}M</strong></p>

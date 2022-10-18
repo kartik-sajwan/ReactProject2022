@@ -10,9 +10,11 @@ import {
 } from "chart.js";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { useAppSelector } from "../../app/reducer/hook";
+import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
 import "./graphComponent.scss";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import axios from "axios";
+import { updateChart } from "../../app/reducer/favouriteSlice";
 
 ChartJS.register(
   Title,
@@ -25,30 +27,55 @@ ChartJS.register(
   ChartDataLabels
 );
 
-type chartProp = {
-  labels: any;
-  plots: any;
+type graphProps = {
+  cityName: String
 };
 
-const GraphComponent = () => {
+const GraphComponent : React.FC<graphProps> =  ({cityName}) => {
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
   const { chart } = useAppSelector((state) => state.weather);
   const labels = [...chart.labels, ""];
+  const dispatch = useAppDispatch();
+  const [apiError, setApiError] = useState("");
 
-  useEffect(() => {
-    setChartData({
-      labels: labels,
-      datasets: [
-        {
-          data: chart.plots,
-          fill: true,
-          borderColor: "#7CC9F2",
-          backgroundColor: "#7CC9F2",
-          borderWidth: 0,
-        },
-      ],
-    });
-  }, [chart]);
+    useEffect(() => {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=34e0733052ac7efacd645cd60b0fc116&units=metric`
+        )
+        .then(
+          (response) => {
+  
+            if (response.data) {
+              const data: number[] = [];
+              const label: string[] = [];
+              response.data.list?.filter((val) => {
+                if (val.dt_txt?.includes("12:00:00")) {
+                  data.push(val.main?.temp);
+                  label.push(val.dt_txt?.slice(8, 10));
+                }
+              });
+              label.push("")
+              setChartData({
+                labels: label,
+                datasets: [
+                  {
+                    data: data,
+                    fill: true,
+                    borderColor: "#7CC9F2",
+                    backgroundColor: "#7CC9F2",
+                    borderWidth: 0,
+                  },
+                ],
+              });
+            }
+          },
+          (error) => {
+            setApiError(error.response.data.message);
+          }
+        );
+    }, []);
+  
 
   const options = {
     plugins: {
