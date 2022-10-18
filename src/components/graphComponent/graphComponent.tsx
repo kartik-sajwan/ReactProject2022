@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -6,14 +7,12 @@ import {
   LineElement,
   PointElement,
   Title,
-  Tooltip,
+  Tooltip
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
 import "./graphComponent.scss";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import axios from "axios";
 
 ChartJS.register(
   Title,
@@ -27,52 +26,48 @@ ChartJS.register(
 );
 
 type graphProps = {
-  cityName: String
+  cityName: String;
 };
 
-const GraphComponent : React.FC<graphProps> =  ({cityName}) => {
+const GraphComponent: React.FC<graphProps> = ({ cityName }) => {
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
-  const dispatch = useAppDispatch();
-  const [apiError, setApiError] = useState("");
 
-    useEffect(() => {
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=34e0733052ac7efacd645cd60b0fc116&units=metric`
-        )
-        .then(
-          (response) => {
-  
-            if (response.data) {
-              const data: number[] = [];
-              const label: string[] = [];
-              response.data.list?.filter((val) => {
-                if (val.dt_txt?.includes("12:00:00")) {
-                  data.push(val.main?.temp);
-                  label.push(val.dt_txt?.slice(8, 10));
-                }
-              });
-              label.push("")
-              setChartData({
-                labels: label,
-                datasets: [
-                  {
-                    data: data,
-                    fill: true,
-                    borderColor: "#7CC9F2",
-                    backgroundColor: "#7CC9F2",
-                    borderWidth: 0,
-                  },
-                ],
-              });
-            }
-          },
-          (error) => {
-            setApiError(error.response.data.message);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=34e0733052ac7efacd645cd60b0fc116&units=metric`
+      )
+      .then(
+        (response) => {
+          if (response.data) {
+            const data: number[] = [];
+            const label: string[] = [];
+            response.data.list?.forEach((val) => {
+              if (val.dt_txt?.includes("12:00:00")) {
+                data.push(val.main?.temp);
+                label.push(val.dt_txt?.slice(8, 10));
+              }
+            });
+            label.push("");
+            setChartData({
+              labels: label,
+              datasets: [
+                {
+                  data: data,
+                  fill: true,
+                  borderColor: "#7CC9F2",
+                  backgroundColor: "#7CC9F2",
+                  borderWidth: 0,
+                },
+              ],
+            });
           }
-        );
-    }, []);
-  
+        },
+        (error) => {
+          console.log(error.response.data.message);
+        }
+      );
+  }, [cityName]);
 
   const options = {
     plugins: {
@@ -132,3 +127,4 @@ const GraphComponent : React.FC<graphProps> =  ({cityName}) => {
 };
 
 export { GraphComponent };
+
