@@ -1,97 +1,51 @@
-import {
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-} from "chart.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   addFavourite,
   clearSelected,
-  removeFavourite,
-  updateChart,
+  removeFavourite
 } from "../../app/reducer/favouriteSlice";
 import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
-import { IForecast } from "../../interfaces/interfaces";
 import { GraphComponent } from "../graphComponent/graphComponent";
 import "./weatherDetail.scss";
 
-import axios from "axios";
-import moment, { Moment } from "moment";
-// import 'chart.js/auto'
-
-ChartJS.register(
-  Title,
-  Tooltip,
-  LineElement,
-  Legend,
-  CategoryScale,
-  LinearScale,
-  PointElement
-);
-
+import moment from "moment";
 
 const WeatherDetail = () => {
   const { favourites, selected } = useAppSelector((state) => state.weather);
-  const [cityForecast, setCityForecast] = useState<IForecast>({});
   const [isFavourite, setIsFavourite] = useState(false);
-  const [apiError, setApiError] = useState("");
   const dispatch = useAppDispatch();
   const navigateTo = useNavigate();
 
+  
   const isSelectedInFavourites = () => {
     favourites.map((fav) => {
-      if (fav.id === selected.id) {
+      if (fav.id === selected?.id) {
         setIsFavourite(true);
       }
     });
   };
 
   useEffect(() => {
-    // axios
-    //   .get(
-    //     `https://api.openweathermap.org/data/2.5/forecast?q=${selected.name}&appid=34e0733052ac7efacd645cd60b0fc116&units=metric`
-    //   )
-    //   .then(
-    //     (response) => {
-    //       setCityForecast(response.data);
-
-    //       if (response.data !== cityForecast) {
-    //         const data: number[] = [];
-    //         const label: string[] = [];
-    //         response.data.list?.filter((val) => {
-    //           if (val.dt_txt?.includes("12:00:00")) {
-    //             data.push(val.main?.temp);
-    //             label.push(val.dt_txt?.slice(8, 10));
-    //           }
-    //         });
-    //         dispatch(updateChart({ plots: data, labels: label }));
-    //       }
-    //     },
-    //     (error) => {
-    //       setApiError(error.response.data.message);
-    //     }
-    //   );
+    
+//   if (selected.name="") {
+//     navigateTo("/home")
+//  }
     isSelectedInFavourites();
   }, []);
 
   //Get weather icon
   const icon: any =
-    selected.weather!.map((item) => {
+    selected?.weather?.map((item) => {
       return item.icon;
     }) ?? "";
 
   
-  const temp: any = Math.round(selected.main!.temp);
-  const time = moment(selected.dt).format("hh:mm A");
+  const temp: any = Math.round(selected?.main?.temp);
+  const time = moment(selected?.dt).format("hh:mm A");
   
-  const sunrise = moment.unix(selected.sys.sunrise);
-  const sunset = moment.unix(selected.sys.sunset);
+  const sunrise = moment.unix(selected?.sys?.sunrise);
+  const sunset = moment.unix(selected?.sys?.sunset);
 
   // Find length of day and daylight left
   const now = moment()
@@ -101,8 +55,9 @@ const WeatherDetail = () => {
   const dayLengthMins = dayLength % 60;
 
   const daylightLeft = sunset.diff(now, 'minutes');
-  const daylightHours = (Math.floor(daylightLeft/60) > 12) ? (24 - Math.floor(daylightLeft/60)) : Math.floor(daylightLeft/60);
+  const daylightHours = (Math.floor(daylightLeft/60) >= 12) ? (24 - Math.floor(daylightLeft/60)) : Math.floor(daylightLeft/60);
   const daylightMins = daylightLeft % 60;
+
 
   return (
     <div className="card-wrapper-details">
@@ -238,3 +193,4 @@ const WeatherDetail = () => {
 };
 
 export { WeatherDetail };
+

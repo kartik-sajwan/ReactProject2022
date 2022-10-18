@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { IWeather } from '../../interfaces/interfaces';
-import {Carousel} from '../carousel/carousel';
 import { Favs } from '../favs/Favs';
 import { Search } from '../search/Search';
 import { WeatherCard } from '../weatherCard/weatherCard';

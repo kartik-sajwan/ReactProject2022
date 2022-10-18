@@ -39,7 +39,6 @@ const Search: React.FC<SearchProps> = ({handleSearchResultUpdate}) => {
         },
         (error) => {
 			setApiError(error.response.data.message);
-			alert(error.response.data.message);
 			setSearchTerm("");
         }
       )
@@ -61,11 +60,13 @@ const Search: React.FC<SearchProps> = ({handleSearchResultUpdate}) => {
 					onChange={(event) => {
 						setSearchTerm(event.target.value);
 						suggestCities(searchTerm);
+						setApiError("");
 					}
 				}
 				/>
-				<button className='search-btn' onClick={() => {handleSearch(searchTerm); fillSearchTerm(searchTerm)}}></button>
+				<button className='search-btn' onClick={() => {handleSearch(searchTerm); fillSearchTerm(searchTerm);}}></button>
 			</div>
+			<p className='api-error'>{apiError}</p>
 			<div className="tag-container">
 				{searchTerm?.length && citySuggestions?.length
 					? citySuggestions?.map((city) => (

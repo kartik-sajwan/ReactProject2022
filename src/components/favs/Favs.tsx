@@ -1,31 +1,22 @@
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 import "./Favs.scss";
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 
-import Carousel from "react-simply-carousel";
-import empty from "../../assets/empty.png";
-import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
-import { removeFavourite, updateChart } from "../../app/reducer/favouriteSlice";
 import moment from "moment";
-import { IForecast, IWeather } from "../../interfaces/interfaces";
-import { GraphComponent } from "../graphComponent/graphComponent";
-import axios from "axios";
 import { useState } from "react";
-import Slider from "react-slick";
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
+import Carousel from "react-simply-carousel";
+import { removeFavourite } from "../../app/reducer/favouriteSlice";
+import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
+import empty from "../../assets/empty.png";
+import { IWeather } from "../../interfaces/interfaces";
+import { GraphComponent } from "../graphComponent/graphComponent";
 
 const Favs = () => {
   const favourites = useAppSelector((state) => state.weather.favourites);
   const dispatch = useAppDispatch();
-  const [cityForecast, setCityForecast] = useState<IForecast>({});
   const [apiError, setApiError] = useState("");
 
   const [activeSlide, setActiveSlide] = useState(0);
-  const [dayDetails, setDayDetails] = useState([]);
-  // const [daylightHours, setDaylightHours] = useState(0);
-  // const [daylightMins, setDaylightMins] = useState(0);
-  // const [dayLengthHours, setDayLenghtHours] = useState(0);
-  // const [dayLengthMins, setDayLengthMins] = useState(0);
   
   const findIcon = (fav: IWeather) => {
     let icon: any = "";
@@ -34,43 +25,6 @@ const Favs = () => {
     });
     return icon;
   };
-
-  const drawGraph = (cityName: String) => {
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=34e0733052ac7efacd645cd60b0fc116&units=metric`
-      )
-      .then(
-        (response) => {
-          setCityForecast(response.data);
-
-          if (response.data !== cityForecast) {
-            const data: number[] = [];
-            const label: string[] = [];
-            response.data.list?.filter((val) => {
-              if (val.dt_txt?.includes("12:00:00")) {
-                data.push(val.main?.temp);
-                label.push(val.dt_txt?.slice(8, 10));
-              }
-            });
-            dispatch(updateChart({ plots: data, labels: label }));
-          }
-        },
-        (error) => {
-          setApiError(error.response.data.message);
-        }
-      );
-  }
-
-  const sliderSettings = {
-    // centerMode: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    variableWidth: true,
-    dots: true,
-    infinite: true,
-    speed: 500,
-};
 
    const calculate = (val) => {
    const sunrise = moment.unix(val.sys.sunrise);
@@ -84,7 +38,7 @@ const Favs = () => {
   return {
     dayLenghtHours: Math.floor(dayLength/60),
     dayLenghtMins: dayLength % 60,
-    daylightHours: Math.floor(dayLength/60),
+    daylightHours: (Math.floor(daylightLeft/60) >= 12) ? (24 - Math.floor(daylightLeft/60)) : Math.floor(daylightLeft/60),
     daylightMins: daylightLeft % 60,
   }
  }
@@ -256,3 +210,4 @@ const NoResults = () => {
 };
 
 export { Favs };
+

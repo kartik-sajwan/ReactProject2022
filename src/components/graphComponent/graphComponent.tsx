@@ -14,7 +14,6 @@ import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
 import "./graphComponent.scss";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import axios from "axios";
-import { updateChart } from "../../app/reducer/favouriteSlice";
 
 ChartJS.register(
   Title,
@@ -33,8 +32,6 @@ type graphProps = {
 
 const GraphComponent : React.FC<graphProps> =  ({cityName}) => {
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
-  const { chart } = useAppSelector((state) => state.weather);
-  const labels = [...chart.labels, ""];
   const dispatch = useAppDispatch();
   const [apiError, setApiError] = useState("");
 
