@@ -146,6 +146,62 @@
       }
     }
   }
+  .rain-check {
+    display: flex;
+    justify-content: space-between;
+    width: 20.438rem;
+    height: 10.188rem;
+    background-color: #fdfcfc;
+    border-radius: 0.688rem;
+
+    .data {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 1rem;
+      .warning {
+        color: #ffcc4d;
+        font-size: 0.938rem;
+      }
+      .expected {
+        display: flex;
+        .item {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 0.75rem;
+          color: #c4c4c4;
+          margin: 0.5rem 0.3rem;
+          text-align: center;
+          padding: 0.3rem;
+          p {
+          }
+          .value {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 0.938rem;
+            color: #9a9a9a;
+            margin: 0.4rem 0rem;
+          }
+        }
+      }
+    }
+    .image {
+      display: flex;
+      padding: 1rem;
+      .rain-img {
+        background-color: transparent;
+        background-image: url(../../assets/rain_check.svg);
+        background-size: 100% 100%;
+        border: 0;
+        padding: 3rem;
+      }
+    }
+  }
   .weather-detail {
     display: flex;
     flex-direction: row;
@@ -259,7 +315,6 @@
     }
 
     .action-btn {
-      
       margin: 2rem 0rem 0rem 0rem;
 
       .go-back {
@@ -387,6 +442,10 @@
           margin: 1rem 0rem;
         }
       }
+    }
+
+    .rain-check {
+      display: none;
     }
     .weather-detail {
       display: flex;

@@ -32,6 +32,8 @@ const Favs = () => {
     const dayLength = sunset.diff(sunrise, "minutes");
     const daylightLeft = sunset.diff(now, "minutes");
 
+    const cloudiness: any = Math.trunc(val.clouds.all)
+
     return {
       dayLenghtHours: Math.floor(dayLength / 60),
       dayLenghtMins: dayLength % 60,
@@ -40,6 +42,8 @@ const Favs = () => {
           ? 24 - Math.floor(daylightLeft / 60)
           : Math.floor(daylightLeft / 60),
       daylightMins: daylightLeft % 60,
+      expected: moment().add(1, "hours").format("HH:mm a"),
+      warning: (Math.trunc(val.clouds.all) > 80 ? true : false),
     };
   };
 
@@ -150,6 +154,27 @@ const Favs = () => {
                     </div>
                   </div>
                 </div>
+                {dayDetails.warning && (
+        <div className="rain-check">
+          <div className="data">
+            <p className="warning">&#9888; WARNING</p>
+            <div className="expected">
+              <div className="item">
+                <p>% RAIN</p>
+                <p className="value">{val.clouds?.all}</p>
+              </div>
+              <div className="item">
+                <p>EXP. TIME</p>
+                <p className="value">{dayDetails.expected}</p>
+              </div>
+            </div>
+            <p className="warning">Expecting Rainfall</p>
+          </div>
+          <div className="image">
+            <div className="rain-img"></div>
+          </div>
+        </div>
+      )}
                 <div className="weather-detail">
                   <div className="item">
                     <p>TIME</p>
@@ -209,4 +234,3 @@ const NoResults = () => {
 };
 
 export { Favs };
-
