@@ -8,7 +8,7 @@ type WeatherProp = {
 	result: IWeather;
 }
 
-const WeatherCard: React.FC<WeatherProp> =  (cityWeather: WeatherProp) => {
+const WeatherCard: React.FC<WeatherProp> =  (cityWeather) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
@@ -24,7 +24,26 @@ const WeatherCard: React.FC<WeatherProp> =  (cityWeather: WeatherProp) => {
 		 <div className="card-wrapper" onClick={() => {dispatch(addSelected(cityWeather.result));navigate("/weatherdetail")}}>
 			<div className="city-details">
 				<h3><strong>{cityWeather.result.name}</strong></h3>
-				<h2>{temp}&#176;</h2>
+				<div className="temperature">
+					<h2>
+					<strong>{temp}</strong>
+					</h2>
+					<svg
+					width="8"
+					height="8"
+					viewBox="0 0 8 8"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					>
+					<circle
+						cx="4"
+						cy="4"
+						r="3.25"
+						stroke="#2C2C2C"
+						stroke-width="1.5"
+					/>
+					</svg>
+				</div>
 				{ warning && <p className="warning">&#9888; WARNING</p>}
 			</div>
 			<div className="brief-weather">

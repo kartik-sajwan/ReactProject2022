@@ -4,11 +4,19 @@ import { IWeather } from "../../interfaces/interfaces";
 type initialStateType = {
 	favourites : IWeather[];
 	selected: IWeather;
+	chart: {
+		plots: number[];
+		labels: string[];
+	}
 }
 
 const initialState: initialStateType ={
 	favourites: [],
-	selected: {}
+	selected: {},
+	chart: {
+		plots: [],
+		labels: []
+	}
 }
 
 const favouriteSlice = createSlice({
@@ -30,9 +38,13 @@ const favouriteSlice = createSlice({
 			
 			clearSelected: (state, action) => {
 				state.selected = action.payload;
+			},
+			updateChart: (state, action) => {
+				state.chart = action.payload;
 			}
+
 	}
 })
 
 export default favouriteSlice.reducer;
-export const { addFavourite, addSelected, removeFavourite, clearSelected } = favouriteSlice.actions
+export const { addFavourite, addSelected, removeFavourite, clearSelected, updateChart } = favouriteSlice.actions

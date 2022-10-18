@@ -54,3 +54,59 @@ export type IWeather = {
     cod?: number
 }
   
+export type IForecast = {
+    cod?: number,
+    message?: number,
+    cnt?: number,
+    list?: [IForecastItem],
+    city?: {
+        id?: number,
+        name?: String,
+        coord?: {
+            lat?: number,
+            lon?: number
+        },
+        country?: String,
+        population?: number,
+        timezone?: number,
+        sunrise?: number,
+        sunset?: number
+    }
+}
+
+export type IForecastItem = {
+    dt?: number,
+    main?: {
+        temp?: number,
+        feels_like?: number,
+        temp_min?: number,
+        temp_max?: number,
+        pressure?: number,
+        sea_level?: number,
+        grnd_level?: number,
+        humidity?: number,
+        temp_kf?: number
+    },
+    weather?: [
+        {
+            id?: number,
+            main?: String,
+            description?: String,
+            icon?: String
+        }
+    ],
+    clouds?: {
+        all?: number
+    },
+    wind?: {
+        speed?: number,
+        deg?: number,
+        gust?: number
+    },
+    visibility?: number,
+    pop?: number,
+    sys?: {
+        pod?: String
+    },
+    dt_txt?: String
+}
