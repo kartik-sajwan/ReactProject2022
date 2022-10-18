@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   addFavourite,
   clearSelected,
-  removeFavourite,
+  removeFavourite
 } from "../../app/reducer/favouriteSlice";
 import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
 import { GraphComponent } from "../graphComponent/graphComponent";
@@ -218,3 +218,4 @@ const WeatherDetail = () => {
 };
 
 export { WeatherDetail };
+

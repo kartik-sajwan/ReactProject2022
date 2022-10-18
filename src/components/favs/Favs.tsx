@@ -13,8 +13,6 @@ import { GraphComponent } from "../graphComponent/graphComponent";
 const Favs = () => {
   const favourites = useAppSelector((state) => state.weather.favourites);
   const dispatch = useAppDispatch();
-  const [apiError, setApiError] = useState("");
-
   const [activeSlide, setActiveSlide] = useState(0);
   
   const findIcon = (fav: IWeather) => {
