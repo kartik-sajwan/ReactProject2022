@@ -32,8 +32,6 @@ const Favs = () => {
     const dayLength = sunset.diff(sunrise, "minutes");
     const daylightLeft = sunset.diff(now, "minutes");
 
-    const cloudiness: any = Math.trunc(val.clouds.all)
-
     return {
       dayLenghtHours: Math.floor(dayLength / 60),
       dayLenghtMins: dayLength % 60,
