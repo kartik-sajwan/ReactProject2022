@@ -17,19 +17,17 @@ const WeatherDetail = () => {
   const dispatch = useAppDispatch();
   const navigateTo = useNavigate();
 
-  
-
   useEffect(() => {
     //   if (selected.name="") {
     //     navigateTo("/home")
     //  }
     const isSelectedInFavourites = () => {
-    favourites.forEach((fav) => {
-      if (fav.id === selected?.id) {
-        setIsFavourite(true);
-      }
-    });
-  };
+      favourites.forEach((fav) => {
+        if (fav.id === selected?.id) {
+          setIsFavourite(true);
+        }
+      });
+    };
     isSelectedInFavourites();
   }, [favourites, selected]);
 
@@ -58,6 +56,12 @@ const WeatherDetail = () => {
       ? 24 - Math.floor(daylightLeft / 60)
       : Math.floor(daylightLeft / 60);
   const daylightMins = daylightLeft % 60;
+
+  const expected = moment().add(1, "hours").format("HH:mm a");
+  const cloudiness: any = selected.clouds?.all
+    ? Math.trunc(selected.clouds?.all)
+    : "";
+  const warning: boolean = cloudiness > 80 ? true : false;
 
   return (
     <div className="card-wrapper-details">
@@ -174,6 +178,28 @@ const WeatherDetail = () => {
           </div>
         </div>
       </div>
+
+      {warning && (
+        <div className="rain-check">
+          <div className="data">
+            <p className="warning">&#9888; WARNING</p>
+            <div className="expected">
+              <div className="item">
+                <p>% RAIN</p>
+                <p className="value">{selected.clouds?.all}</p>
+              </div>
+              <div className="item">
+                <p>EXP. TIME</p>
+                <p className="value">{expected}</p>
+              </div>
+            </div>
+            <p className="warning">Expecting Rainfall</p>
+          </div>
+          <div className="image">
+            <div className="rain-img"></div>
+          </div>
+        </div>
+      )}
 
       <div className="weather-detail">
         <div className="item">
