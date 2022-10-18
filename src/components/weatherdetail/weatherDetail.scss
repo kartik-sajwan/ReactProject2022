@@ -219,21 +219,19 @@
     }
   }
 }
-.empty-watchlist {
-  margin: 5rem;
-  img {
-    margin: 1rem 2.5rem;
-  }
-  p {
-    margin: 1rem;
-  }
-}
+// .empty-watchlist {
+//   margin: 5rem;
+//   img {
+//     margin: 1rem 2.5rem;
+//   }
+//   p {
+//     margin: 1rem;
+//   }
+// }
 
 @media only screen and (min-device-width: 1024px) {
   .card-wrapper-details {
-
     margin: 0rem;
-
     .top-bar {
       display: flex;
       align-items: center;

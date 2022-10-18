@@ -1,6 +1,6 @@
 .home-favs {
   display: flex;
-
+  
   .card-wrapper-favs {
     display: flex;
     flex-direction: column;
@@ -9,26 +9,24 @@
     margin: 0.5rem 1.5rem;
 
     background: #ffffff;
-    border-radius: 11px;
+    border-radius: 0.688rem;
     border-radius: 0.938rem;
     padding: 0rem;
 
     .remove-from-list {
       align-self: flex-end;
       .remove {
-        width: 62.88px;
-        height: 39px;
-        left: 299px;
-        top: 65px;
+        width: 3.93rem;
+        height: 2.438rem;
 
         background: #ec7272;
-        border-radius: 7px;
+        border-radius: 0.438rem;
 
         font-family: "Poppins";
         font-style: normal;
         font-weight: 500;
-        font-size: 12px;
-        line-height: 18px;
+        font-size: 0.75rem;
+        line-height: 1.125rem;
         text-align: center;
         margin: 0rem 0rem 0rem 0.2rem;
         color: #ffffff;
@@ -41,8 +39,8 @@
       align-items: center;
       margin: 0rem 0rem;
       img {
-        width: 123px;
-        height: 123px;
+        width: 7.688rem;
+        height: 7.688rem;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -55,14 +53,14 @@
           font-family: "Poppins";
           font-style: normal;
           font-weight: 600;
-          font-size: 30px;
-          line-height: 45px;
+          font-size: 1.875rem;
+          line-height: 2.813rem;
           text-align: center;
           color: #2c2c2c;
         }
         svg {
-          height: 21px;
-          width: 21px;
+          height: 1.313rem;
+          width: 1.313rem;
           margin: 0.7rem;
         }
       }
@@ -74,13 +72,13 @@
         h2 {
           font-family: "Poppins";
           font-weight: 500;
-          font-size: 60px;
+          font-size: 3.75rem;
           color: #2c2c2c;
           text-align: center;
         }
         svg {
-          height: 8px;
-          width: 8px;
+          height: 0.5rem;
+          width: 0.5rem;
           margin: 1rem 0rem;
         }
       }
@@ -90,7 +88,7 @@
       flex-direction: row;
       justify-content: space-between;
       background-color: #fdfcfc;
-      border-radius: 11px;
+      border-radius: 0.688rem;
 
       .item {
         display: flex;
@@ -99,8 +97,8 @@
         font-family: "Poppins";
         font-style: normal;
         font-weight: 500;
-        font-size: 12px;
-        line-height: 18px;
+        font-size: 0.75rem;
+        line-height: 1.125rem;
         color: #c4c4c4;
         margin: 0.5rem 0.6rem;
         text-align: center;
@@ -110,8 +108,8 @@
           font-family: "Poppins";
           font-style: normal;
           font-weight: 500;
-          font-size: 15px;
-          line-height: 22px;
+          font-size: 0.938rem;
+          line-height: 1.375rem;
           color: #9a9a9a;
           margin: 0.5rem 0rem;
         }
@@ -122,15 +120,15 @@
       flex-direction: column;
       justify-content: space-between;
       background-color: #fdfcfc;
-      border-radius: 11px;
+      border-radius: 0.688rem;
       margin: 1rem 0rem;
 
       h5 {
         font-family: "Poppins";
         font-style: normal;
         font-weight: 500;
-        font-size: 12px;
-        line-height: 18px;
+        font-size: 0.75rem;
+        line-height: 1.125rem;
         /* identical to box height */
         margin: 1rem 0.6rem;
 
@@ -138,8 +136,8 @@
       }
 
       .graph {
-        width: 340px;
-        height: 150px;
+        width: 21.25rem;
+        height: 9.375rem;
         margin: 0.5rem 0rem;
         padding: 0rem 1rem;
       }
@@ -148,8 +146,8 @@
         font-family: "Poppins";
         font-style: normal;
         font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
+        font-size: 0.75rem;
+        line-height: 0.938rem;
         /* identical to box height */
         color: #9a9a9a;
         margin: 0.5rem 0.5rem;
@@ -176,7 +174,7 @@
       height: 4.5rem;
     }
     p {
-      font-size: 15px;
+      font-size: 0.938rem;
     }
   }
 }
@@ -184,6 +182,7 @@
 @media only screen and (min-device-width: 1024px) {
   .home-favs {
     align-items: center;
+    margin: 0rem 0rem 2rem 0rem;
 
     .card-wrapper-favs {
       display: flex;
@@ -193,28 +192,25 @@
       margin: 0.5rem 1.5rem;
 
       background: #ffffff;
-      border-radius: 11px;
+      border-radius: 0.688rem;
       border-radius: 0.938rem;
       padding: 0rem;
 
       .remove-from-list {
         align-self: flex-end;
         .remove {
-          width: 62.88px;
-          height: 39px;
-          left: 299px;
-          top: 65px;
+          width: 5.813rem;
+          height: 2.956rem;
 
           background: #ec7272;
-          border-radius: 7px;
+          border-radius: 0.438rem;
 
           font-family: "Poppins";
           font-style: normal;
           font-weight: 500;
-          font-size: 12px;
-          line-height: 18px;
+          font-size: 0.75rem;
           text-align: center;
-          margin: 0rem 0rem 0rem 0.2rem;
+          margin: 0.2rem 0rem 0.2rem 0.2rem;
           color: #ffffff;
         }
       }
@@ -223,10 +219,12 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        margin: 0rem 0rem;
+        margin: 0.5rem 0rem;
+        flex-grow: 1;
+  
         img {
-          width: 123px;
-          height: 123px;
+          width: 7.688rem;
+          height: 7.688rem;
           display: block;
           margin-left: auto;
           margin-right: auto;
@@ -239,18 +237,17 @@
             font-family: "Poppins";
             font-style: normal;
             font-weight: 600;
-            font-size: 30px;
-            line-height: 45px;
+            font-size: 1.875rem;
             text-align: center;
             color: #2c2c2c;
           }
           svg {
-            height: 21px;
-            width: 21px;
+            height: 1.313rem;
+            width: 1.313rem;
             margin: 0.7rem;
           }
         }
-
+  
         .temperature {
           display: flex;
           flex-direction: row;
@@ -258,13 +255,13 @@
           h2 {
             font-family: "Poppins";
             font-weight: 500;
-            font-size: 60px;
+            font-size: 4.375rem;
             color: #2c2c2c;
             text-align: center;
           }
           svg {
-            height: 8px;
-            width: 8px;
+            height: 0.5rem;
+            width: 0.5rem;
             margin: 1rem 0rem;
           }
         }
@@ -274,30 +271,29 @@
         flex-direction: row;
         justify-content: space-between;
         background-color: #fdfcfc;
-        border-radius: 11px;
-
+        border-radius: 0.688rem;
+        width: 64.5rem;
+        border: 0.063rem solid rgba(0, 0, 0, 0.1);
+  
         .item {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          font-family: "Poppins";
+          font-family: "Roboto";
           font-style: normal;
-          font-weight: 500;
-          font-size: 12px;
-          line-height: 18px;
-          color: #c4c4c4;
-          margin: 0.5rem 0.6rem;
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: #5a5a5a;
+          margin: 1.5rem 1.5rem 0rem 1.5rem;
           text-align: center;
-          padding: 0.3rem;
-
+  
           .value {
-            font-family: "Poppins";
+            font-family: "Roboto";
             font-style: normal;
-            font-weight: 500;
-            font-size: 15px;
-            line-height: 22px;
-            color: #9a9a9a;
-            margin: 0.5rem 0rem;
+            font-weight: 700;
+            font-size: 1.688rem;
+            color: #535353;
+            margin: 0.2rem 0rem 1rem 0rem;
           }
         }
       }
@@ -306,39 +302,39 @@
         flex-direction: column;
         justify-content: space-between;
         background-color: #fdfcfc;
-        border-radius: 11px;
-        margin: 1rem 0rem;
-
+        border-radius: 0.688rem;
+        margin: 2rem 0rem;
+        width: 64.5rem;
+        border: 0.063rem solid rgba(0, 0, 0, 0.1);
         h5 {
           font-family: "Poppins";
           font-style: normal;
           font-weight: 500;
-          font-size: 12px;
-          line-height: 18px;
+          font-size: 1.25rem;
           /* identical to box height */
-          margin: 1rem 0.6rem;
-
+          margin: 2rem 3rem;
+  
           color: #c4c4c4;
         }
-
+  
         .graph {
-          width: 340px;
-          height: 150px;
+          width: 30rem;
+          height: 10rem;
           margin: 0.5rem 0rem;
           padding: 0rem 1rem;
+          align-self: flex-end;
+          margin: 0rem 5rem;
         }
-
+  
         .daylight {
-          font-family: "Poppins";
+          font-family: "Roboto";
           font-style: normal;
-          font-weight: 400;
-          font-size: 12px;
-          line-height: 15px;
-          /* identical to box height */
+          font-weight: 500;
+          font-size: 1.25rem;
           color: #9a9a9a;
-          margin: 0.5rem 0.5rem;
+          margin: 2rem 3rem;
           p {
-            padding: 0.2rem;
+            padding: 1rem;
             strong {
               color: #2c2c2c;
             }
@@ -350,7 +346,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 7rem;
+      margin: rem;
       .clouds {
         width: 25.299rem;
         height: 10.89rem;

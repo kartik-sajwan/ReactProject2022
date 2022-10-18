@@ -49,7 +49,7 @@ const Favs = () => {
         <Carousel
         containerProps={{
           style: {
-            width: "100%",
+            width: "99.9%",
             justifyContent: "space-between",
             userSelect: "text"
           }
@@ -66,8 +66,8 @@ const Favs = () => {
               border: 0,
               background: "#ccc",
               margin: '0 0.25rem',
-              position: 'relative',
-              bottom: '44rem',
+              // position: 'relative',
+              // bottom: '44rem',
             }
           },
           activeItemBtnProps: {
@@ -77,8 +77,8 @@ const Favs = () => {
               borderRadius: "50%",
               border: 0,
               background: "#2c2c2c",
-              position: 'relative',
-              bottom: '44rem',
+              // position: 'relative',
+              // bottom: '44rem',
               margin: '0 0.25rem',
             }
           }
