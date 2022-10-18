@@ -17,20 +17,21 @@ const WeatherDetail = () => {
   const dispatch = useAppDispatch();
   const navigateTo = useNavigate();
 
-  const isSelectedInFavourites = () => {
-    favourites.map((fav) => {
-      if (fav.id === selected?.id) {
-        setIsFavourite(true);
-      }
-    });
-  };
+  
 
   useEffect(() => {
     //   if (selected.name="") {
     //     navigateTo("/home")
     //  }
+    const isSelectedInFavourites = () => {
+    favourites.forEach((fav) => {
+      if (fav.id === selected?.id) {
+        setIsFavourite(true);
+      }
+    });
+  };
     isSelectedInFavourites();
-  }, []);
+  }, [favourites, selected]);
 
   //Get weather icon
   const icon: any =

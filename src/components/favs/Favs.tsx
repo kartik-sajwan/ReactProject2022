@@ -17,9 +17,9 @@ const Favs = () => {
   
   const findIcon = (fav: IWeather) => {
     let icon: any = "";
-    fav.weather?.map((item) => {
-      icon = item.icon;
-    });
+    fav.weather?.forEach((item) => (
+      icon = item.icon
+    ));
     return icon;
   };
 

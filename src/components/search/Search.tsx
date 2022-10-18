@@ -10,11 +10,11 @@ type SearchProps = {
 };
 const Search: React.FC<SearchProps> = ({ handleSearchResultUpdate }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [citiesList, readCities] = useState(cities);
+  const [citiesList, setCitiesList] = useState(cities);
   const [citySuggestions, setSuggestions] = useState<ICity[]>([]);
-  const [cityWeather, setCityWeather] = useState<IWeather>({});
   const [apiError, setApiError] = useState("");
 
+  setCitiesList(cities);
   //Suggestions for searchTerm from citiesList
   const suggestCities = (searchTerm: string, topFifty: ICity[] = []) => {
     citiesList.filter((val) => {
@@ -23,8 +23,9 @@ const Search: React.FC<SearchProps> = ({ handleSearchResultUpdate }) => {
       } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
         topFifty.push({ id: val.id, name: val.name });
       }
-      setSuggestions([...topFifty].slice(0, 5));
+      return([...topFifty].slice(0, 5));
     });
+	return ([]);
   };
 
   const handleSearch = (searchTerm: string, response: IWeather = {}) => {
@@ -35,7 +36,6 @@ const Search: React.FC<SearchProps> = ({ handleSearchResultUpdate }) => {
       .then(
         (response) => {
           setSearchTerm("");
-          setCityWeather(response.data);
           handleSearchResultUpdate(response.data);
         },
         (error) => {
@@ -60,7 +60,7 @@ const Search: React.FC<SearchProps> = ({ handleSearchResultUpdate }) => {
           value={searchTerm}
           onChange={(event) => {
             setSearchTerm(event.target.value);
-            suggestCities(searchTerm);
+            setSuggestions(suggestCities(searchTerm));
             setApiError("");
           }}
         />
