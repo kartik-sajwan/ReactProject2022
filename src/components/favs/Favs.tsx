@@ -1,4 +1,8 @@
 import "./Favs.scss";
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
+import Carousel from "react-simply-carousel";
 import empty from "../../assets/empty.png";
 import { useAppDispatch, useAppSelector } from "../../app/reducer/hook";
 import { removeFavourite, updateChart } from "../../app/reducer/favouriteSlice";
@@ -7,6 +11,8 @@ import { IForecast, IWeather } from "../../interfaces/interfaces";
 import { GraphComponent } from "../graphComponent/graphComponent";
 import axios from "axios";
 import { useState } from "react";
+import Slider from "react-slick";
+import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const Favs = () => {
   const favourites = useAppSelector((state) => state.weather.favourites);
@@ -14,10 +20,16 @@ const Favs = () => {
   const [cityForecast, setCityForecast] = useState<IForecast>({});
   const [apiError, setApiError] = useState("");
 
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [dayDetails, setDayDetails] = useState([]);
+  // const [daylightHours, setDaylightHours] = useState(0);
+  // const [daylightMins, setDaylightMins] = useState(0);
+  // const [dayLengthHours, setDayLenghtHours] = useState(0);
+  // const [dayLengthMins, setDayLengthMins] = useState(0);
+  
   const findIcon = (fav: IWeather) => {
     let icon: any = "";
     fav.weather?.map((item) => {
-      console.log(item.icon);
       icon = item.icon;
     });
     return icon;
@@ -50,25 +62,80 @@ const Favs = () => {
       );
   }
 
-  // const sunrise = moment.unix(favourites.sys.sunrise);
-  // const sunset = moment.unix(selected.sys.sunset);
+  const sliderSettings = {
+    // centerMode: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    variableWidth: true,
+    dots: true,
+    infinite: true,
+    speed: 500,
+};
 
-  // // Find length of day and daylight left
-  // const now = moment()
+   const calculate = (val) => {
+   const sunrise = moment.unix(val.sys.sunrise);
+   const sunset = moment.unix(val.sys.sunset);
+  
+   // Find length of day and daylight left
+   const now = moment()
+   const dayLength = sunset.diff(sunrise, 'minutes');
+   const daylightLeft = sunset.diff(now, 'minutes');
 
-  // const dayLength = sunset.diff(sunrise, 'minutes');
-  // const dayLengthHours = Math.floor(dayLength/60);
-  // const dayLengthMins = dayLength % 60;
-
-  // const daylightLeft = sunset.diff(now, 'minutes');
-  // const daylightHours = (Math.floor(daylightLeft/60) > 12) ? (24 - Math.floor(daylightLeft/60)) : Math.floor(daylightLeft/60);
-  // const daylightMins = daylightLeft % 60;
-
+  return {
+    dayLenghtHours: Math.floor(dayLength/60),
+    dayLenghtMins: dayLength % 60,
+    daylightHours: Math.floor(dayLength/60),
+    daylightMins: daylightLeft % 60,
+  }
+ }
 
   return (
     <div className="home-favs">
+    
       {favourites.length > 0 ? (
-        favourites.map((val) => (
+        <Carousel
+        containerProps={{
+          style: {
+            width: "100%",
+            justifyContent: "space-between",
+            userSelect: "text"
+          }
+        }}
+        activeSlideIndex={activeSlide}
+        onRequestChange={setActiveSlide}
+        dotsNav={{
+          show: true,
+          itemBtnProps: {
+            style: {
+              height: 8,
+              width: 8,
+              borderRadius: "50%",
+              border: 0,
+              background: "#ccc",
+              margin: '0 0.25rem',
+              position: 'relative',
+              bottom: '44rem',
+            }
+          },
+          activeItemBtnProps: {
+            style: {
+              height: 8,
+              width: 8,
+              borderRadius: "50%",
+              border: 0,
+              background: "#2c2c2c",
+              position: 'relative',
+              bottom: '44rem',
+              margin: '0 0.25rem',
+            }
+          }
+        }}
+        itemsToShow={1}
+        speed={400}
+      >
+        {favourites.map((val) => {
+          const dayDetails = calculate(val)
+          return (
           <div className="card-wrapper-favs">
             <div className="remove-from-list">
               <button
@@ -151,30 +218,31 @@ const Favs = () => {
             <div className="graph-wrapper">
               <h5>UPCOMING DAYS</h5>
               <div className="graph">
-              
                 <GraphComponent cityName={val.name}/>
               </div>
               <div className="daylight">
                 <p>
                   Length of day:{" "}
                   <strong>
-                    {/* {dayLengthHours}H {dayLengthMins}M */}
+                    {dayDetails.dayLenghtHours}H {dayDetails.dayLenghtMins}M
                   </strong>
                 </p>
                 <p>
                   Remaining daylight:{" "}
                   <strong>
-                    {/* {daylightHours}H {daylightMins}M */}
+                    {dayDetails.daylightHours}H {dayDetails.daylightMins}M
                   </strong>
                 </p>
               </div>
             </div>
           </div>
-        ))
+        )})}
+        </Carousel>
       ) : (
         <NoResults />
       )}
-    </div>
+            
+   </div>
   );
 };
 
