@@ -40,7 +40,7 @@ const Favs = () => {
           ? 24 - Math.floor(daylightLeft / 60)
           : Math.floor(daylightLeft / 60),
       daylightMins: daylightLeft % 60,
-      expected: moment().add(1, "hours").format("HH:mm a"),
+      expected: moment().add(1, "hours").format("hh:mm A"),
       warning: (Math.trunc(val.clouds.all) > 80 ? true : false),
     };
   };
@@ -159,7 +159,7 @@ const Favs = () => {
             <div className="expected">
               <div className="item">
                 <p>% RAIN</p>
-                <p className="value">{val.clouds?.all}</p>
+                <p className="value">{val.clouds?.all}%</p>
               </div>
               <div className="item">
                 <p>EXP. TIME</p>
