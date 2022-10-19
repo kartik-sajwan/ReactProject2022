@@ -24,7 +24,7 @@ const Search: React.FC<SearchProps> = ({ handleSearchResultUpdate }) => {
       } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
         topFifty.push({ id: val.id, name: val.name });
       }
-      setSuggestions([...topFifty].slice(0, 5));
+      setSuggestions([...topFifty].slice(0, 50));
     });
   };
 

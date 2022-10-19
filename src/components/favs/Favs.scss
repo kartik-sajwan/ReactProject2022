@@ -4,7 +4,6 @@
   .card-wrapper-favs {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     margin: 0.5rem 1.5rem;
 
@@ -37,7 +36,7 @@
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      margin: 0rem 0rem;
+      margin: 0.5rem 0rem;
       img {
         width: 7.688rem;
         height: 7.688rem;
@@ -54,7 +53,6 @@
           font-style: normal;
           font-weight: 600;
           font-size: 1.875rem;
-          line-height: 2.813rem;
           text-align: center;
           color: #2c2c2c;
         }
@@ -90,6 +88,7 @@
       height: 10.188rem;
       background-color: #fdfcfc;
       border-radius: 0.688rem;
+      margin: 1rem 0rem;
 
       .data {
         display: flex;
@@ -245,6 +244,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      
       margin: 0.5rem 1.5rem;
 
       background: #ffffff;
@@ -352,7 +352,7 @@
             font-weight: 700;
             font-size: 1.688rem;
             color: #535353;
-            margin: 0.2rem 0rem 1rem 0rem;
+            margin: 0.8rem 0rem 1rem 0rem;
           }
         }
       }
