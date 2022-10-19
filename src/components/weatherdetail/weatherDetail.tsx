@@ -57,7 +57,7 @@ const WeatherDetail = () => {
       : Math.floor(daylightLeft / 60);
   const daylightMins = daylightLeft % 60;
 
-  const expected = moment().add(1, "hours").format("HH:mm a");
+  const expected = moment().add(1, "hours").format("hh:mm A");
   const cloudiness: any = selected.clouds?.all
     ? Math.trunc(selected.clouds?.all)
     : "";
@@ -186,7 +186,7 @@ const WeatherDetail = () => {
             <div className="expected">
               <div className="item">
                 <p>% RAIN</p>
-                <p className="value">{selected.clouds?.all}</p>
+                <p className="value">{selected.clouds?.all}%</p>
               </div>
               <div className="item">
                 <p>EXP. TIME</p>
